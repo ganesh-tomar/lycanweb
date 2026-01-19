@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+* {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+section {
+  position: relative;
+  padding: 80px 0;
+  max-width: 2500px;
+  margin: 0 auto;
+}
+.container {
+  position: relative;
+  max-width: 2460px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
