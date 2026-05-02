@@ -1,7 +1,7 @@
 // components/sections/ServicesGrid.tsx
 import { ArrowRight } from "lucide-react";
 
-const services = [
+const fallbackServices = [
   {
     title: "WEB TRANSFORMATIONS",
     desc: "Seventy percent faster, zero excuses",
@@ -19,7 +19,16 @@ const services = [
   },
 ];
 
-export default function ServicesGrid() {
+export default function ServicesGrid({ services }: { services?: any[] }) {
+  // Map WordPress posts to the exact format needed for the design
+  const displayServices = services && services.length > 0
+    ? services.map(post => ({
+      title: post.title,
+      desc: post.excerpt ? post.excerpt.replace(/<[^>]+>/g, '').trim() : "", // Strip HTML tags from WP excerpt
+      tag: post.tags?.nodes?.[0]?.name || "Service",
+    }))
+    : fallbackServices;
+
   return (
     <section id="services" className="py-24 bg-black">
       <div className="max-w-7xl mx-auto px-6">
@@ -33,7 +42,7 @@ export default function ServicesGrid() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {services.map((service, i) => (
+          {displayServices.map((service, i) => (
             <div
               key={i}
               className="group bg-[#111] border border-gray-800 rounded-xl p-8 hover:border-violet-700/50 transition-all hover:-translate-y-2"

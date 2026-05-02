@@ -1,6 +1,5 @@
-// app/layout.tsx
-import type { Metadata } from "next";
-import {Geist_Mono } from "next/font/google";
+import Head from "next/head";
+import { Geist_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -30,19 +29,18 @@ const oswald = Oswald({
   display: "swap",
 });
 
-const metadata: Metadata = {
-  title: "LycanWeb - Unleash the Beast in Your Digital Empire",
-  description: "Premium web transformations for founders who hunt growth.",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
+    <>
+      <Head>
+        <title>LycanWeb - Unleash the Beast in Your Digital Empire</title>
+        <meta name="description" content="Premium web transformations for founders who hunt growth." />
+      </Head>
+      <div
         className={`
           ${montserrat.variable} 
           ${oswald.variable} 
@@ -54,7 +52,7 @@ export default function RootLayout({
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />
-      </body>
-    </html>
+      </div>
+    </>
   );
 }
