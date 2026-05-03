@@ -1,14 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Head from "next/head";
-import Hero from "@/components/Hero";
-import ServicesGrid from "@/components/ServicesGrid";
-import PortfolioGrid from "@/components/PortfolioGrid";
-import WhyUs from "@/components/WhyUs";
-import FinalCTA from "@/components/Cta";
+import BlockRenderer from "@/components/BlockRenderer";
 import { fetchAPI } from "@/lib/api";
+import { PageBuilderQuery } from "@/lib/queries";
 
 export async function getStaticProps() {
   const data = await fetchAPI(`
     query HomePageQuery {
+      page(id: "home", idType: URI) {
+        ${PageBuilderQuery}
+      }
       generalSettings {
         title
         description
@@ -19,7 +20,7 @@ export async function getStaticProps() {
           title
           excerpt
           tags {
-            nodes {
+            nodes { 
               name
             }
           }
@@ -28,16 +29,19 @@ export async function getStaticProps() {
     }
   `);
 
+  const homePage = data?.page || null;
+
   return {
     props: {
       wpData: data?.generalSettings || null,
       servicesData: data?.posts?.nodes || [],
+      pageModules: homePage?.pageBuilder?.sections || [],
     },
     revalidate: 10,
   };
 }
 
-export default function Home({ wpData, servicesData }: { wpData: any; servicesData: any[] }) {
+export default function Home({ wpData, servicesData, pageModules }: any) {
   return (
     <>
       <Head>
@@ -49,18 +53,8 @@ export default function Home({ wpData, servicesData }: { wpData: any; servicesDa
         />
       </Head>
 
-      {/* Small Banner to prove WordPress connection works */}
-      {wpData && (
-        <div className="bg-violet-900 text-white text-center py-2 text-sm">
-          Connected to WordPress successfully! Backend Title: <strong>{wpData.title}</strong>
-        </div>
-      )}
-
-      <Hero />
-      <ServicesGrid services={servicesData} />
-      <PortfolioGrid />
-      <WhyUs />
-      <FinalCTA />
+      {/* Everything is fully dynamic now. The Page Builder dictates the layout! */}
+      <BlockRenderer blocks={pageModules} globalData={{ servicesData }} />
     </>
   );
 }

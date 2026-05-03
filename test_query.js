@@ -1,0 +1,1 @@
+const fetch = require('node-fetch'); // Next.js 16/Node 20 has global fetch, but if not we can just use native fetch in a simple node script on Node 20+. Wait, Node 18+ has native fetch. Let's write an ESM script or just use native fetch.

@@ -1,10 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // components/sections/FinalCTA.tsx
 "use client";
 
 import { useState } from "react";
 
-export default function FinalCTA() {
+export default function FinalCTA({ data }: { data?: any }) {
   const [email, setEmail] = useState("");
+  
+  const title = data?.title || "READY TO RUN WITH <span class='text-violet-500'>THE PACK</span>?";
+  const buttonText = data?.button?.buttonText || "Unleash Now";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,12 +20,13 @@ export default function FinalCTA() {
   return (
     <section className="py-32 bg-gradient-to-t from-violet-950/30 to-black text-center">
       <div className="max-w-4xl mx-auto px-6">
-        <h2 className="text-5xl md:text-7xl font-black mb-8">
-          READY TO RUN WITH <span className="text-violet-500">THE PACK</span>?
-        </h2>
+        <h2 
+          className="text-5xl md:text-7xl font-black mb-8"
+          dangerouslySetInnerHTML={{ __html: title }}
+        />
 
         <p className="text-xl md:text-2xl text-gray-300 mb-12">
-          Tell us your prey and we'll hunt it down together.
+          Tell us your prey and we&apos;ll hunt it down together.
         </p>
 
         <form
@@ -40,7 +45,7 @@ export default function FinalCTA() {
             type="submit"
             className="px-10 py-5 bg-violet-700 hover:bg-violet-600 text-white font-medium rounded-full transition-all shadow-lg shadow-violet-900/40 whitespace-nowrap"
           >
-            Unleash Now
+            {buttonText}
           </button>
         </form>
 

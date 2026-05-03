@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // components/sections/PortfolioGrid.tsx
 const projects = [
   {
@@ -17,7 +18,8 @@ const projects = [
   },
 ];
 
-export default function PortfolioGrid() {
+export default function ImageCardGrid({ data }: { data?: any }) {
+  const sectionTitle = data?.title || "SELECTED <span class='text-violet-500'>HUNTS</span>";
   return (
     <section
       id="work"
@@ -25,9 +27,10 @@ export default function PortfolioGrid() {
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-black">
-            SELECTED <span className="text-violet-500">HUNTS</span>
-          </h2>
+          <h2 
+            className="text-5xl md:text-6xl font-black"
+            dangerouslySetInnerHTML={{ __html: sectionTitle }}
+          />
           <p className="text-xl text-gray-400 mt-4">
             Elite projects that proved the pack runs deep
           </p>

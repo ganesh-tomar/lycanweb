@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // components/sections/ServicesGrid.tsx
 import { ArrowRight } from "lucide-react";
 
@@ -19,7 +20,8 @@ const fallbackServices = [
   },
 ];
 
-export default function ServicesGrid({ services }: { services?: any[] }) {
+export default function TextCardGrid({ services, data }: { services?: any[], data?: any }) {
+  const sectionTitle = data?.title || "WHAT WE <span class='text-violet-500'>HUNT</span>";
   // Map WordPress posts to the exact format needed for the design
   const displayServices = services && services.length > 0
     ? services.map(post => ({
@@ -33,9 +35,10 @@ export default function ServicesGrid({ services }: { services?: any[] }) {
     <section id="services" className="py-24 bg-black">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-black mb-4">
-            WHAT WE <span className="text-violet-500">HUNT</span>
-          </h2>
+          <h2 
+            className="text-5xl md:text-6xl font-black mb-4"
+            dangerouslySetInnerHTML={{ __html: sectionTitle }}
+          />
           <p className="text-xl text-gray-400">
             From prey to predator overnight
           </p>
