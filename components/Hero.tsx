@@ -1,13 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import Image from "next/image";
+import Button from "./Button";
 
 export default function Hero({ data }: { data?: any }) {
+  console.log(data);
+
   const title = data?.title || "";
   const subtitle = data?.subtitle || "";
 
   const buttons = data?.buttons || [];
-  const primaryBtn = buttons[0]?.button?.buttonText || "";
-  const secondaryBtn = buttons[1]?.button?.buttonText || "";
 
   return (
     <section className="min-h-screen flex items-center justify-center">
@@ -24,7 +24,7 @@ export default function Hero({ data }: { data?: any }) {
       <div className="container">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h1
-            className="text-5xl md:text-7xl lg:text-8xl text-white tracking-tight leading-none mb-8 whitespace-pre-line"
+            className="text-5xl md:text-7xl lg:text-8xl text-white tracking-tight leading-none mb-8 whitespace-pre-line [&_span]:text-violet-500"
             dangerouslySetInnerHTML={{ __html: title }}
           />
 
@@ -33,16 +33,22 @@ export default function Hero({ data }: { data?: any }) {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            {primaryBtn && (
-              <button className="px-10 py-5 bg-violet-700 hover:bg-violet-600 text-white text-lg font-medium rounded-full transition-all shadow-xl shadow-violet-900/40">
-                {primaryBtn}
-              </button>
-            )}
-            {secondaryBtn && (
-              <button className="px-10 py-5 border border-violet-700 text-violet-400 hover:bg-violet-950/50 text-lg font-medium rounded-full transition-all">
-                {secondaryBtn}
-              </button>
-            )}
+            {buttons.map((btnItem: any, i: number) => {
+              const btn = btnItem?.button;
+              if (!btn?.buttonText) return null;
+
+              const variant = (typeof btn.buttonStyle === 'string' ? btn.buttonStyle.toLowerCase() : null) || (i === 0 ? "primary" : "secondary");
+
+              return (
+                <Button
+                  key={i}
+                  href={btn.url || "#"}
+                  variant={variant as "primary" | "secondary" | "link"}
+                >
+                  {btn.buttonText}
+                </Button>
+              );
+            })}
           </div>
         </div>
       </div>

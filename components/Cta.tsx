@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // components/sections/FinalCTA.tsx
 "use client";
-
 import { useState } from "react";
+import Button from "./Button";
 
 export default function FinalCTA({ data }: { data?: any }) {
   const [email, setEmail] = useState("");
@@ -21,7 +21,7 @@ export default function FinalCTA({ data }: { data?: any }) {
     <section className="py-32 bg-linear-to-t from-violet-950/30 to-black text-center">
       <div className="max-w-4xl mx-auto px-6">
         <h2 
-          className="text-5xl md:text-7xl font-black mb-8"
+          className="text-5xl md:text-7xl font-black mb-8 [&_span]:text-violet-500"
           dangerouslySetInnerHTML={{ __html: title }}
         />
 
@@ -39,12 +39,11 @@ export default function FinalCTA({ data }: { data?: any }) {
             required
             className="flex-1 px-6 py-5 bg-black border border-violet-900 rounded-full text-white placeholder-gray-500 focus:outline-none focus:border-violet-500 transition-all"
           />
-          <button
-            type="submit"
-            className="px-10 py-5 bg-violet-700 hover:bg-violet-600 text-white font-medium rounded-full transition-all shadow-lg shadow-violet-900/40 whitespace-nowrap"
-          >
-            {buttonText}
-          </button>
+          {buttonText && (
+            <Button type="submit" variant="primary">
+              {buttonText}
+            </Button>
+          )}
         </form>
 
 

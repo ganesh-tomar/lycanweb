@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-// components/sections/ServicesGrid.tsx
 import { ArrowRight } from "lucide-react";
+import Button from "./Button";
 
 export default function TextCardGrid({ services, data }: { services?: any[], data?: any }) {
   const sectionTitle = data?.title || "";
@@ -18,7 +17,7 @@ export default function TextCardGrid({ services, data }: { services?: any[], dat
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 
-            className="text-5xl md:text-6xl font-black mb-4"
+            className="text-5xl md:text-6xl font-black mb-4 [&_span]:text-violet-500"
             dangerouslySetInnerHTML={{ __html: sectionTitle }}
           />
         </div>
@@ -34,12 +33,9 @@ export default function TextCardGrid({ services, data }: { services?: any[], dat
               </div>
               <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
               <p className="text-gray-400 mb-6">{service.desc}</p>
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 text-violet-400 hover:text-violet-300"
-              >
+              <Button variant="link" href="#">
                 Explore <ArrowRight size={16} />
-              </a>
+              </Button>
             </div>
           ))}
         </div>
