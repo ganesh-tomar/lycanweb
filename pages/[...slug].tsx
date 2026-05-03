@@ -36,10 +36,6 @@ export async function getStaticProps({ params }: any) {
     query DynamicPageQuery($uri: ID!) {
       page(id: $uri, idType: URI) {
         title
-        seo {
-          title
-          metaDesc
-        }
         ${PageBuilderQuery}
       }
     }
@@ -64,8 +60,8 @@ export default function DynamicPage({ pageData, pageModules }: any) {
   return (
     <>
       <Head>
-        <title>{pageData?.seo?.title || pageData?.title || "LycanWeb"}</title>
-        <meta name="description" content={pageData?.seo?.metaDesc || ""} />
+        <title>{pageData?.title || "LycanWeb"}</title>
+        <meta name="description" content="LycanWeb Page" />
       </Head>
       
       {/* Dynamic Page Builder Blocks */}

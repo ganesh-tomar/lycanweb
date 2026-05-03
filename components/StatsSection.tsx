@@ -3,38 +3,38 @@
 export default function StatsSection({ data }: { data?: any }) {
   const title = data?.title || "WHY THE PACK <span class='text-violet-500'>TRUSTS US</span>";
   const subtitle = data?.subtitle || "We deliver like predators hunt: relentless and precise";
-  
+
   // Use ACF stat blocks, fallback to hardcoded if none exist
   const rawStats = data?.statBlocks || [];
-  const reasons = rawStats.length > 0 
+  const reasons = rawStats.length > 0
     ? rawStats.map((stat: any) => ({
-        tag: stat.statLabel || "",
-        title: stat.statValue || "",
-        desc: "", // Optional description if you add it to ACF later
-      }))
+      tag: stat.statLabel || "",
+      title: stat.statValue || "",
+      desc: "", // Optional description if you add it to ACF later
+    }))
     : [
-        {
-          title: "BEAST MODE DELIVERY",
-          tag: "ALWAYS",
-          desc: "Projects ship on schedule, no excuses",
-        },
-        {
-          title: "NO REVISION HELL",
-          tag: "CLEAN",
-          desc: "We get it right the first time, every time",
-        },
-        {
-          title: "REVENUE FIRST PHILOSOPHY",
-          tag: "RUTHLESS",
-          desc: "Every decision feeds the bottom line",
-        },
-      ];
+      {
+        title: "BEAST MODE DELIVERY",
+        tag: "ALWAYS",
+        desc: "Projects ship on schedule, no excuses",
+      },
+      {
+        title: "NO REVISION HELL",
+        tag: "CLEAN",
+        desc: "We get it right the first time, every time",
+      },
+      {
+        title: "REVENUE FIRST PHILOSOPHY",
+        tag: "RUTHLESS",
+        desc: "Every decision feeds the bottom line",
+      },
+    ];
 
   return (
     <section className="py-24 bg-black">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 
+          <h2
             className="text-5xl md:text-6xl font-black mb-4"
             dangerouslySetInnerHTML={{ __html: title }}
           />
