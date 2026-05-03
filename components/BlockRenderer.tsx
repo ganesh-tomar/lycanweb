@@ -19,7 +19,7 @@ export default function BlockRenderer({ blocks, globalData }: { blocks: any[], g
             return <FinalCTA key={index} data={block} />;
           
           case "PageBuilderSectionsTextCardGridLayout":
-            return <TextCardGrid key={index} data={block} services={globalData?.servicesData} />;
+            return <TextCardGrid key={index} data={block} />;
           
           case "PageBuilderSectionsImageCardGridLayout":
             return <ImageCardGrid key={index} data={block} />;
