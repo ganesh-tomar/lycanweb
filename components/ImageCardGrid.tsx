@@ -4,7 +4,7 @@ import Button from "./Button";
 export default function ImageCardGrid({ data }: { data?: any }) {
   const sectionTitle = data?.title || "";
   const subtitle = data?.subtitle || "";
-  const cards = data?.cards || [];
+  const cards = data?.imageCards || [];
   return (
     <section
       id="work"
@@ -28,7 +28,7 @@ export default function ImageCardGrid({ data }: { data?: any }) {
             const imageUrl = card.cardImage?.node?.sourceUrl || "/placeholder.jpg";
             const altText = card.cardImage?.node?.altText || card.cardTitle;
             const tags = card.categories || [];
-            
+
             return (
               <div
                 key={i}

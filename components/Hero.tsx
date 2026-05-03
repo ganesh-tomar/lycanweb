@@ -2,8 +2,6 @@ import Image from "next/image";
 import Button from "./Button";
 
 export default function Hero({ data }: { data?: any }) {
-  console.log(data);
-
   const title = data?.title || "";
   const subtitle = data?.subtitle || "";
 

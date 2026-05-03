@@ -5,7 +5,7 @@ export default function TextCardGrid({ data }: { data?: any }) {
   const sectionTitle = data?.title || "";
   const subtitle = data?.subtitle || "";
 
-  const displayServices = data?.cards || [];
+  const displayServices = data?.textCards || [];
 
   return (
     <section id="services" className="text-card-grid py-24 bg-black">
@@ -29,10 +29,10 @@ export default function TextCardGrid({ data }: { data?: any }) {
               className="group bg-[#111] border border-gray-800 rounded-xl p-8 hover:border-violet-700/50 transition-all hover:-translate-y-2"
             >
               <div className="text-sm text-violet-500 mb-4 font-medium">
-                {service.tag}
+                {service.type}
               </div>
               <h3 className="text-2xl font-bold mb-3">{service.cardTitle}</h3>
-              <p className="text-gray-400 mb-6">{service.description}</p>
+              <p className="text-gray-400 mb-6">{service.subheading}</p>
               {service.linkText && (
                 <Button variant="link" href={service.linkUrl || "#"}>
                   {service.linkText} <ArrowRight size={16} />

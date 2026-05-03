@@ -2,12 +2,12 @@ export const TextCardGridFragment = `
   ... on PageBuilderSectionsTextCardGridLayout {
     title
     subtitle
-    cards {
+    textCards {
       cardTitle
-      description
       linkText
       linkUrl
-      tag
+      subheading
+      type
     }
   }
 `;

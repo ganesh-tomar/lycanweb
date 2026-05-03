@@ -2,7 +2,7 @@ export const ImageCardGridFragment = `
   ... on PageBuilderSectionsImageCardGridLayout {
     title
     subtitle
-    cards {
+    imageCards {
       cardSubtitle
       cardTitle
       linkText
@@ -13,7 +13,6 @@ export const ImageCardGridFragment = `
       cardImage {
         node {
           sourceUrl
-          altText
         }
       }
     }
