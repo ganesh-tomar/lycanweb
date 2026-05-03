@@ -2,12 +2,12 @@
 import Image from "next/image";
 
 export default function Hero({ data }: { data?: any }) {
-  const title = data?.title || "UNLEASH THE BEAST<br /><span class='text-violet-500'>IN YOUR DIGITAL EMPIRE</span>";
-  const subtitle = data?.subtitle || "We don't design websites. We engineer conversion predators for founders who hunt growth.";
+  const title = data?.title || "";
+  const subtitle = data?.subtitle || "";
 
   const buttons = data?.buttons || [];
-  const primaryBtn = buttons[0]?.button?.buttonText || "Summon the Pack";
-  const secondaryBtn = buttons[1]?.button?.buttonText || "See our Hunts →";
+  const primaryBtn = buttons[0]?.button?.buttonText || "";
+  const secondaryBtn = buttons[1]?.button?.buttonText || "";
 
   return (
     <section className="min-h-screen flex items-center justify-center">
@@ -33,12 +33,16 @@ export default function Hero({ data }: { data?: any }) {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <button className="px-10 py-5 bg-violet-700 hover:bg-violet-600 text-white text-lg font-medium rounded-full transition-all shadow-xl shadow-violet-900/40">
-              {primaryBtn}
-            </button>
-            <button className="px-10 py-5 border border-violet-700 text-violet-400 hover:bg-violet-950/50 text-lg font-medium rounded-full transition-all">
-              {secondaryBtn}
-            </button>
+            {primaryBtn && (
+              <button className="px-10 py-5 bg-violet-700 hover:bg-violet-600 text-white text-lg font-medium rounded-full transition-all shadow-xl shadow-violet-900/40">
+                {primaryBtn}
+              </button>
+            )}
+            {secondaryBtn && (
+              <button className="px-10 py-5 border border-violet-700 text-violet-400 hover:bg-violet-950/50 text-lg font-medium rounded-full transition-all">
+                {secondaryBtn}
+              </button>
+            )}
           </div>
         </div>
       </div>

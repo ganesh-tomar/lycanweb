@@ -7,8 +7,8 @@ import { useState } from "react";
 export default function FinalCTA({ data }: { data?: any }) {
   const [email, setEmail] = useState("");
   
-  const title = data?.title || "READY TO RUN WITH <span class='text-violet-500'>THE PACK</span>?";
-  const buttonText = data?.button?.buttonText || "Unleash Now";
+  const title = data?.title || "";
+  const buttonText = data?.button?.buttonText || "";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,9 +25,7 @@ export default function FinalCTA({ data }: { data?: any }) {
           dangerouslySetInnerHTML={{ __html: title }}
         />
 
-        <p className="text-xl md:text-2xl text-gray-300 mb-12">
-          Tell us your prey and we&apos;ll hunt it down together.
-        </p>
+
 
         <form
           onSubmit={handleSubmit}
@@ -49,12 +47,7 @@ export default function FinalCTA({ data }: { data?: any }) {
           </button>
         </form>
 
-        <p className="mt-6 text-sm text-gray-500">
-          Schedule a call instead?{" "}
-          <a href="#" className="text-violet-400 hover:underline">
-            Book now →
-          </a>
-        </p>
+
       </div>
     </section>
   );

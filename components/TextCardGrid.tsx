@@ -2,26 +2,8 @@
 // components/sections/ServicesGrid.tsx
 import { ArrowRight } from "lucide-react";
 
-const fallbackServices = [
-  {
-    title: "WEB TRANSFORMATIONS",
-    desc: "Seventy percent faster, zero excuses",
-    tag: "Speed",
-  },
-  {
-    title: "CONVERSION ASSAULT",
-    desc: "We track and kill underperformers",
-    tag: "Assault",
-  },
-  {
-    title: "AI-FUELED SPEED",
-    desc: "Machine learning hunts like we do",
-    tag: "Engine",
-  },
-];
-
 export default function TextCardGrid({ services, data }: { services?: any[], data?: any }) {
-  const sectionTitle = data?.title || "WHAT WE <span class='text-violet-500'>HUNT</span>";
+  const sectionTitle = data?.title || "";
   // Map WordPress posts to the exact format needed for the design
   const displayServices = services && services.length > 0
     ? services.map(post => ({
@@ -29,7 +11,7 @@ export default function TextCardGrid({ services, data }: { services?: any[], dat
       desc: post.excerpt ? post.excerpt.replace(/<[^>]+>/g, '').trim() : "", // Strip HTML tags from WP excerpt
       tag: post.tags?.nodes?.[0]?.name || "Service",
     }))
-    : fallbackServices;
+    : [];
 
   return (
     <section id="services" className="py-24 bg-black">
@@ -39,9 +21,6 @@ export default function TextCardGrid({ services, data }: { services?: any[], dat
             className="text-5xl md:text-6xl font-black mb-4"
             dangerouslySetInnerHTML={{ __html: sectionTitle }}
           />
-          <p className="text-xl text-gray-400">
-            From prey to predator overnight
-          </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
