@@ -6,8 +6,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export default function TestimonialSlider({ data }: { data?: any }) {
-  const title = data?.title || "WHAT THE PACK SAYS";
-  const subtitle = data?.subtitle || "Don't just take our word for it.";
   const testimonials = data?.testimonials || [];
 
   const settings = {
@@ -28,18 +26,6 @@ export default function TestimonialSlider({ data }: { data?: any }) {
   return (
     <section className="testimonial-slider py-24 bg-[#0a0a0a]">
       <div className="max-w-4xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 
-            className="text-5xl md:text-6xl font-black mb-4 [&_span]:text-violet-500"
-            dangerouslySetInnerHTML={{ __html: title }}
-          />
-          {subtitle && (
-            <p className="text-xl text-gray-400">
-              {subtitle}
-            </p>
-          )}
-        </div>
-
         <Slider {...settings} className="testimonial-carousel">
           {testimonials.map((testimonial: any, index: number) => (
             <div key={index} className="outline-none">
