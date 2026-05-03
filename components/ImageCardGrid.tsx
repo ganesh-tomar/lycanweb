@@ -23,11 +23,11 @@ export default function ImageCardGrid({ data }: { data?: any }) {
   return (
     <section
       id="work"
-      className="py-24 bg-gradient-to-b from-black to-[#0a0a0a]"
+      className="py-24 bg-linear-to-b from-black to-[#0a0a0a]"
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 
+          <h2
             className="text-5xl md:text-6xl font-black"
             dangerouslySetInnerHTML={{ __html: sectionTitle }}
           />

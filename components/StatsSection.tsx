@@ -47,7 +47,7 @@ export default function StatsSection({ data }: { data?: any }) {
           {reasons.map((reason: { tag: string; title: string; desc?: string }, i: number) => (
             <div
               key={i}
-              className="bg-gradient-to-b from-[#111] to-black border border-gray-800 rounded-xl p-8 hover:border-violet-700/50 transition-all hover:-translate-y-2"
+              className="bg-linear-to-b from-[#111] to-black border border-gray-800 rounded-xl p-8 hover:border-violet-700/50 transition-all hover:-translate-y-2"
             >
               <div className="text-4xl font-black text-violet-600 mb-4">
                 {reason.tag}
