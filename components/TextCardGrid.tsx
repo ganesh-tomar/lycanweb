@@ -4,14 +4,14 @@ import Button from "./Button";
 export default function TextCardGrid({ data }: { data?: any }) {
   const sectionTitle = data?.title || "";
   const subtitle = data?.subtitle || "";
-  
+
   const displayServices = data?.cards || [];
 
   return (
-    <section id="services" className="py-24 bg-black">
+    <section id="services" className="text-card-grid py-24 bg-black">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 
+          <h2
             className="text-5xl md:text-6xl font-black mb-4 [&_span]:text-violet-500"
             dangerouslySetInnerHTML={{ __html: sectionTitle }}
           />

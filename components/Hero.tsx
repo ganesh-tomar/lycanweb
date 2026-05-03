@@ -10,7 +10,7 @@ export default function Hero({ data }: { data?: any }) {
   const buttons = data?.buttons || [];
 
   return (
-    <section className="min-h-screen flex items-center justify-center">
+    <section className="hero-banner min-h-screen flex items-center justify-center">
       <div className="bg-image absolute w-full h-full top-0 left-0 overflow-hidden z-0">
         <Image
           src="/wolf_eyes.png"

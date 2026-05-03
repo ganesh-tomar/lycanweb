@@ -3,6 +3,7 @@ import { CtaFragment } from "./cta";
 import { TextCardGridFragment } from "./textCardGrid";
 import { ImageCardGridFragment } from "./imageCardGrid";
 import { StatsFragment } from "./stats";
+import { TestimonialSliderFragment } from "./testimonialSlider";
 
 // As you build more components, create a .fragment.ts file for them and import them here!
 export const PageBuilderQuery = `
@@ -14,6 +15,7 @@ export const PageBuilderQuery = `
       ${TextCardGridFragment}
       ${ImageCardGridFragment}
       ${StatsFragment}
+      ${TestimonialSliderFragment}
     }
   }
 `;

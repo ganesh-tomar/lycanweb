@@ -5,6 +5,7 @@ export const StatsFragment = `
     statBlocks {
       statLabel
       statValue
+      description
     }
   }
 `;

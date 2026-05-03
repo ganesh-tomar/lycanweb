@@ -4,6 +4,7 @@ import FinalCTA from "./Cta";
 import TextCardGrid from "./TextCardGrid";
 import ImageCardGrid from "./ImageCardGrid";
 import StatsSection from "./StatsSection";
+import TestimonialSlider from "./TestimonialSlider";
 
 export default function BlockRenderer({ blocks, globalData }: { blocks: any[], globalData?: any }) {
   if (!blocks || blocks.length === 0) return null;
@@ -26,6 +27,9 @@ export default function BlockRenderer({ blocks, globalData }: { blocks: any[], g
           
           case "PageBuilderSectionsStatsLayout":
             return <StatsSection key={index} data={block} />;
+            
+          case "PageBuilderSectionsTestimonialsliderLayout":
+            return <TestimonialSlider key={index} data={block} />;
             
           default:
             console.warn(`Unknown block type: ${block.__typename}`);

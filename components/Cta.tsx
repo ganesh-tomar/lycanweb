@@ -6,8 +6,9 @@ import Button from "./Button";
 
 export default function FinalCTA({ data }: { data?: any }) {
   const [email, setEmail] = useState("");
-  
+
   const title = data?.title || "";
+  const subtitle = data?.subtitle || "";
   const buttonText = data?.button?.buttonText || "";
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -18,12 +19,17 @@ export default function FinalCTA({ data }: { data?: any }) {
   };
 
   return (
-    <section className="py-32 bg-linear-to-t from-violet-950/30 to-black text-center">
+    <section className="cta py-32 bg-linear-to-t from-violet-950/30 to-black text-center">
       <div className="max-w-4xl mx-auto px-6">
-        <h2 
+        <h2
           className="text-5xl md:text-7xl font-black mb-8 [&_span]:text-violet-500"
           dangerouslySetInnerHTML={{ __html: title }}
         />
+        {subtitle && (
+          <p className="text-xl md:text-2xl text-gray-300 mb-12">
+            {subtitle}
+          </p>
+        )}
 
 
 
@@ -46,6 +52,12 @@ export default function FinalCTA({ data }: { data?: any }) {
           )}
         </form>
 
+        <p className="mt-6 text-sm text-gray-500">
+          Schedule a call instead?{" "}
+          <a href="#" className="text-violet-400 hover:underline">
+            Book now →
+          </a>
+        </p>
 
       </div>
     </section>

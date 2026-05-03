@@ -9,11 +9,11 @@ export default function StatsSection({ data }: { data?: any }) {
   const reasons = rawStats.map((stat: any) => ({
     tag: stat.statLabel || "",
     title: stat.statValue || "",
-    desc: stat.statDescription || "", 
+    description: stat.description || "",
   }));
 
   return (
-    <section className="py-24 bg-black">
+    <section className="stats py-24 bg-black">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2
@@ -26,7 +26,7 @@ export default function StatsSection({ data }: { data?: any }) {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {reasons.map((reason: { tag: string; title: string; desc?: string }, i: number) => (
+          {reasons.map((reason: { tag: string; title: string; description?: string }, i: number) => (
             <div
               key={i}
               className="bg-linear-to-b from-[#111] to-black border border-gray-800 rounded-xl p-8 hover:border-violet-700/50 transition-all hover:-translate-y-2"
@@ -35,7 +35,7 @@ export default function StatsSection({ data }: { data?: any }) {
                 {reason.tag}
               </div>
               <h3 className="text-2xl font-bold mb-3">{reason.title}</h3>
-              {reason.desc && <p className="text-gray-300">{reason.desc}</p>}
+              {reason.description && <p className="text-gray-300">{reason.description}</p>}
             </div>
           ))}
         </div>
