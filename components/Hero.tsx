@@ -9,7 +9,7 @@ export default function Hero({ data }: { data?: any }) {
 
   return (
     <section className="hero-banner min-h-screen flex items-center justify-center">
-      <div className="bg-image absolute w-full h-full top-0 left-0 overflow-hidden z-0">
+      <div className="bg-image absolute w-full h-full top-0 left-0 overflow-hidden z-0 after:content-[''] after:absolute after:inset-0 after:bg-black/50">
         <Image
           src="/wolf_eyes.png"
           alt="Hero Background"

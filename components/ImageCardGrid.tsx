@@ -34,7 +34,7 @@ export default function ImageCardGrid({ data }: { data?: any }) {
                 key={i}
                 className="group relative rounded-xl overflow-hidden cursor-pointer"
               >
-                <div className="aspect-[4/5] relative">
+                <div className="aspect-4/5 relative">
                   <Image
                     src={imageUrl}
                     alt={altText}
