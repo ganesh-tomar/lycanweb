@@ -15,10 +15,11 @@ export async function getStaticProps() {
           title
           description
         }
-        posts(first: 3) {
+        posts(first: 100) {
           nodes {
             id
             title
+            slug
             excerpt
             tags {
               nodes { 

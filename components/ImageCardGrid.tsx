@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Button from "./Button";
 // components/sections/PortfolioGrid.tsx
 export default function ImageCardGrid({ data }: { data?: any }) {
@@ -30,9 +31,10 @@ export default function ImageCardGrid({ data }: { data?: any }) {
             const tags = card.categories || [];
 
             return (
-              <div
+              <Link
                 key={i}
-                className="group relative rounded-xl overflow-hidden cursor-pointer"
+                href={card.linkUrl || "#"}
+                className="group relative rounded-xl overflow-hidden cursor-pointer block"
               >
                 <div className="aspect-4/5 relative">
                   <Image
@@ -54,12 +56,12 @@ export default function ImageCardGrid({ data }: { data?: any }) {
                   <h3 className="text-2xl font-bold mb-1">{card.cardTitle}</h3>
                   {card.cardSubtitle && <p className="text-gray-300 mb-4">{card.cardSubtitle}</p>}
                   {card.linkText && (
-                    <Button variant="link" href={card.linkUrl || "#"}>
+                    <span className="inline-flex items-center gap-2 text-violet-400 group-hover:text-violet-300 font-semibold transition-all">
                       {card.linkText} →
-                    </Button>
+                    </span>
                   )}
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
