@@ -5,6 +5,7 @@ import TextCardGrid from "./TextCardGrid";
 import ImageCardGrid from "./ImageCardGrid";
 import StatsSection from "./StatsSection";
 import TestimonialSlider from "./TestimonialSlider";
+import ScrollReveal from "./ScrollReveal";
 
 export default function BlockRenderer({ blocks, globalData }: { blocks: any[], globalData?: any }) {
   if (!blocks || blocks.length === 0) return null;
@@ -17,19 +18,39 @@ export default function BlockRenderer({ blocks, globalData }: { blocks: any[], g
             return <Hero key={index} data={block} />;
 
           case "PageBuilderSectionsCtaLayout":
-            return <FinalCTA key={index} data={block} />;
+            return (
+              <ScrollReveal key={index}>
+                <FinalCTA data={block} />
+              </ScrollReveal>
+            );
 
           case "PageBuilderSectionsTextCardGridLayout":
-            return <TextCardGrid key={index} data={block} globalData={globalData} />;
+            return (
+              <ScrollReveal key={index}>
+                <TextCardGrid data={block} globalData={globalData} />
+              </ScrollReveal>
+            );
 
           case "PageBuilderSectionsImageCardGridLayout":
-            return <ImageCardGrid key={index} data={block} />;
+            return (
+              <ScrollReveal key={index}>
+                <ImageCardGrid data={block} />
+              </ScrollReveal>
+            );
 
           case "PageBuilderSectionsStatsLayout":
-            return <StatsSection key={index} data={block} />;
+            return (
+              <ScrollReveal key={index}>
+                <StatsSection data={block} />
+              </ScrollReveal>
+            );
 
           case "PageBuilderSectionsTestimonialsliderLayout":
-            return <TestimonialSlider key={index} data={block} />;
+            return (
+              <ScrollReveal key={index}>
+                <TestimonialSlider data={block} />
+              </ScrollReveal>
+            );
 
           default:
             console.warn(`Unknown block type: ${block.__typename}`);

@@ -2,6 +2,8 @@ import Head from "next/head";
 import { Geist_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CustomCursor from "@/components/CustomCursor";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 // Agar abhi bhi Geist use karna chahta hai toh rakh sakta hai
 // Warna comment out kar dena — hum sirf Montserrat + Oswald use karenge
@@ -20,7 +22,7 @@ const montserrat = Montserrat({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   style: ["normal", "italic"],
   display: "swap",
-});
+  });
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -49,6 +51,8 @@ export default function RootLayout({
           bg-black text-white
         `}
       >
+        <CustomCursor />
+        <WhatsAppButton />
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />
