@@ -275,7 +275,7 @@ export default function Hero({ data }: { data?: any }) {
               return (
                 <motion.span
                   key={i}
-                  className={`inline-block mr-4 md:mr-6 ${isHighlight ? "text-violet-500 font-extrabold" : "text-white"}`}
+                  className={`inline-block mr-4 md:mr-6 ${isHighlight ? "text-shimmer font-extrabold" : "text-white"}`}
                   variants={wordVariants}
                 >
                   {word}

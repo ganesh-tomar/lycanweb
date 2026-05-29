@@ -78,7 +78,7 @@ export default function PricingPage() {
             TRANSPARENT BLUEPRINTS
           </span>
           <h1 className="text-5xl md:text-7xl font-black tracking-tight uppercase leading-none mb-6 Oswald">
-            DOMINANCE TIER <span className="text-violet-500">PRICING</span>
+            DOMINANCE TIER <span className="text-shimmer">PRICING</span>
           </h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
             No dynamic hidden fees. No vague hourly scopes. Just surgical, fixed-price blueprints to secure your business a premier digital presence.
@@ -159,7 +159,7 @@ export default function PricingPage() {
         {/* Trust features / conversion section */}
         <div className="max-w-4xl mx-auto px-6 text-center border-t border-gray-900 pt-20">
           <h2 className="text-2xl md:text-3xl font-black uppercase Oswald mb-4">
-            EVERY PLAN SECURES OUR <span className="text-violet-500">LYCAN PROTOCOLS</span>
+            EVERY PLAN SECURES OUR <span className="text-shimmer">LYCAN PROTOCOLS</span>
           </h2>
           <p className="text-gray-400 text-sm max-w-2xl mx-auto mb-10">
             Regardless of your selected tier, we maintain absolute compliance with modern digital speed policies. Your site will rank, convert, and scale.

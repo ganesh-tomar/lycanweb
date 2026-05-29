@@ -17,3 +17,30 @@ section {
   margin: 0 auto;
   padding: 0 20px;
 }
+@keyframes textShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.text-shimmer {
+  background: linear-gradient(
+    135deg,
+    #8b5cf6 0%,
+    #d8b4fe 30%,
+    #a78bfa 50%,
+    #8b5cf6 70%,
+    #c084fc 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 5s linear infinite;
+  display: inline-block;
+}

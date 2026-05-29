@@ -74,7 +74,7 @@ export default function ServicesPage() {
             WE APPORTION DOMINANCE
           </span>
           <h1 className="text-5xl md:text-7xl font-black tracking-tight uppercase leading-none mb-6 Oswald">
-            OUR SURGICAL <span className="text-violet-500">SERVICES</span>
+            OUR SURGICAL <span className="text-shimmer">SERVICES</span>
           </h1>
           <p className="text-xl text-gray-400 max-w-3xl leading-relaxed">
             We don't sell generic packages or build cookie-cutter landing pages. We engineer custom performance solutions built to convert global users into high-intent buyers.

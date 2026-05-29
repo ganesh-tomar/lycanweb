@@ -6,9 +6,8 @@ import { motion } from "motion/react";
 export default function ContactUs() {
   const [formData, setFormData] = useState({
     name: "",
+    phone: "",
     email: "",
-    projectType: "Custom Next.js Web App",
-    budget: "$2,500 - $5,000",
     message: ""
   });
 
@@ -29,21 +28,36 @@ export default function ContactUs() {
     setErrorMsg("");
 
     try {
-      const res = await fetch("/api/send", {
+      const res = await fetch("https://formspree.io/f/mdajjnap", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          message: formData.message,
+          _subject: `🐺 New Lycan Lead: ${formData.name}`
+        })
       });
 
-      const data = await res.json();
-      if (res.ok && data.success) {
+      if (res.ok) {
         setSuccess(true);
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          message: ""
+        });
       } else {
-        setErrorMsg(data.error || "Something went wrong. Please try again.");
+        const data = await res.json();
+        setErrorMsg(data.error || "Submission failed. Please check your inputs and try again.");
       }
     } catch (err) {
       console.error(err);
-      setErrorMsg("Failed to connect to the server. Please check your connection.");
+      setErrorMsg("Failed to connect to the server. Please check your internet connection.");
     } finally {
       setLoading(false);
     }
@@ -131,15 +145,17 @@ export default function ContactUs() {
                 </p>
 
                 {/* Simulated booking CTA pointing to actual scheduling overlay / trigger */}
-                <a
-                  href="https://calendly.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-white bg-violet-700 hover:bg-violet-600 px-6 py-4 rounded-full text-xs font-semibold w-full justify-center transition-all group shadow-md shadow-violet-900/30"
+                <button
+                  onClick={() => {
+                    if (typeof window !== "undefined") {
+                      window.dispatchEvent(new Event("open-booking-modal"));
+                    }
+                  }}
+                  className="inline-flex items-center gap-2 text-white bg-violet-700 hover:bg-violet-600 px-6 py-4 rounded-full text-xs font-semibold w-full justify-center transition-all group shadow-md shadow-violet-900/30 cursor-pointer border-0 outline-none"
                 >
                   Open Booking Calendar
                   <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-                </a>
+                </button>
               </div>
             </div>
 
@@ -180,21 +196,39 @@ export default function ContactUs() {
                     </div>
                   )}
 
-                  {/* Name field */}
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="name" className="text-xs uppercase font-black text-gray-400 tracking-wider">
-                      Your Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="e.g. Ganesh Tomar"
-                      className="bg-[#0b0b0c] border border-gray-900 focus:border-violet-700/60 focus:ring-1 focus:ring-violet-700/35 text-white rounded-xl px-4 py-3 text-sm transition-all outline-none"
-                    />
+                  {/* Two columns: Name + Phone */}
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="name" className="text-xs uppercase font-black text-gray-400 tracking-wider">
+                        Your Name *
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="e.g. Ganesh Tomar"
+                        className="bg-[#0b0b0c] border border-gray-900 focus:border-violet-700/60 focus:ring-1 focus:ring-violet-700/35 text-white rounded-xl px-4 py-3 text-sm transition-all outline-none"
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="phone" className="text-xs uppercase font-black text-gray-400 tracking-wider">
+                        Phone Number *
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        required
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="e.g. +91 98765 43210"
+                        className="bg-[#0b0b0c] border border-gray-900 focus:border-violet-700/60 focus:ring-1 focus:ring-violet-700/35 text-white rounded-xl px-4 py-3 text-sm transition-all outline-none"
+                      />
+                    </div>
                   </div>
 
                   {/* Email field */}
@@ -214,49 +248,10 @@ export default function ContactUs() {
                     />
                   </div>
 
-                  {/* Two columns: Project Type + Budget */}
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="flex flex-col gap-2">
-                      <label htmlFor="projectType" className="text-xs uppercase font-black text-gray-400 tracking-wider">
-                        Project Blueprint
-                      </label>
-                      <select
-                        id="projectType"
-                        name="projectType"
-                        value={formData.projectType}
-                        onChange={handleChange}
-                        className="bg-[#0b0b0c] border border-gray-900 focus:border-violet-700/60 focus:ring-1 focus:ring-violet-700/35 text-white rounded-xl px-4 py-3.5 text-sm transition-all outline-none cursor-pointer"
-                      >
-                        <option value="Custom Next.js Web App">Custom Next.js Web App</option>
-                        <option value="SpeedTactics Optimization">SpeedTactics Optimization</option>
-                        <option value="Conversion Engine Setup">Conversion Engine Setup</option>
-                        <option value="Full Pack Headless System">Full Pack Headless System</option>
-                      </select>
-                    </div>
-
-                    <div className="flex flex-col gap-2">
-                      <label htmlFor="budget" className="text-xs uppercase font-black text-gray-400 tracking-wider">
-                        Project Budget Allocation
-                      </label>
-                      <select
-                        id="budget"
-                        name="budget"
-                        value={formData.budget}
-                        onChange={handleChange}
-                        className="bg-[#0b0b0c] border border-gray-900 focus:border-violet-700/60 focus:ring-1 focus:ring-violet-700/35 text-white rounded-xl px-4 py-3.5 text-sm transition-all outline-none cursor-pointer"
-                      >
-                        <option value="Under $1,500">Under $1,500</option>
-                        <option value="$1,500 - $2,500">$1,500 - $2,500</option>
-                        <option value="$2,500 - $5,000">$2,500 - $5,000</option>
-                        <option value="$5,000+">$5,000+</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  {/* Message field */}
+                  {/* Message/Description field */}
                   <div className="flex flex-col gap-2">
                     <label htmlFor="message" className="text-xs uppercase font-black text-gray-400 tracking-wider">
-                      Describe the Scope *
+                      Describe the Project / Description *
                     </label>
                     <textarea
                       id="message"
@@ -265,7 +260,7 @@ export default function ContactUs() {
                       rows={5}
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Detail your goals, dynamic requirements, or slow page hurdles here..."
+                      placeholder="Detail your goals, structural requirements, or speed goals here..."
                       className="bg-[#0b0b0c] border border-gray-900 focus:border-violet-700/60 focus:ring-1 focus:ring-violet-700/35 text-white rounded-xl px-4 py-3 text-sm transition-all outline-none resize-none"
                     />
                   </div>

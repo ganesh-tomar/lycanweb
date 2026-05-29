@@ -41,7 +41,7 @@ export default function AboutPage() {
             THE LYCAN CREED
           </span>
           <h1 className="text-5xl md:text-7xl font-black tracking-tight uppercase leading-none mb-6 Oswald">
-            CRAFTED FOR THE <span className="text-violet-500">HUNT</span>
+            CRAFTED FOR THE <span className="text-shimmer">HUNT</span>
           </h1>
           <p className="text-xl text-gray-400 max-w-3xl leading-relaxed">
             We are a surgical engineering and speed optimization agency. We don't write bloated code, we don't build generic layouts, and we never make excuses. We exist to help high-growth founders win.
@@ -57,7 +57,7 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl md:text-4xl font-black uppercase Oswald mb-6">
-              FROM PREY TO <span className="text-violet-500">PREDATOR</span>
+              FROM PREY TO <span className="text-shimmer">PREDATOR</span>
             </h2>
             <div className="text-gray-400 space-y-6 text-base md:text-lg leading-relaxed">
               <p>
@@ -90,11 +90,11 @@ export default function AboutPage() {
             </p>
             <div className="flex gap-4 justify-center items-center">
               <div className="text-center px-6 py-2 border border-gray-900 rounded-xl bg-black/60">
-                <div className="text-2xl font-black text-violet-500 Oswald font-black">99+</div>
+                <div className="text-2xl font-black text-shimmer Oswald font-black">99+</div>
                 <div className="text-xs text-gray-500 uppercase font-bold">Speed Guarantee</div>
               </div>
               <div className="text-center px-6 py-2 border border-gray-900 rounded-xl bg-black/60">
-                <div className="text-2xl font-black text-violet-500 Oswald font-black">100%</div>
+                <div className="text-2xl font-black text-shimmer Oswald font-black">100%</div>
                 <div className="text-xs text-gray-500 uppercase font-bold">Handcoded JS</div>
               </div>
             </div>
@@ -104,7 +104,7 @@ export default function AboutPage() {
         {/* Core Values Section */}
         <div className="max-w-7xl mx-auto px-6 mb-24 relative z-10">
           <h2 className="text-2xl md:text-3xl font-black uppercase text-center Oswald mb-16">
-            OUR CORE <span className="text-violet-500">VALUES</span>
+            OUR CORE <span className="text-shimmer">VALUES</span>
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -130,7 +130,7 @@ export default function AboutPage() {
         {/* CTA section */}
         <div className="max-w-4xl mx-auto px-6 text-center border-t border-gray-900 pt-20">
           <h2 className="text-3xl font-black uppercase Oswald mb-6">
-            READY TO UNLEASH THE <span className="text-violet-500">BEAST?</span>
+            READY TO UNLEASH THE <span className="text-shimmer">BEAST?</span>
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto mb-10 text-sm">
             Partner with an elite speed-and-conversion engineering pack. Let's build your custom digital blueprint.

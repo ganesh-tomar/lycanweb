@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import BookingModal from "@/components/BookingModal";
 
 // Agar abhi bhi Geist use karna chahta hai toh rakh sakta hai
 // Warna comment out kar dena — hum sirf Montserrat + Oswald use karenge
@@ -53,6 +54,7 @@ export default function RootLayout({
       >
         <CustomCursor />
         <WhatsAppButton />
+        <BookingModal />
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />

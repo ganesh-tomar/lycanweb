@@ -5,9 +5,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { name, email, projectType, budget, message } = req.body;
+  const { name, phone, email, message } = req.body;
 
-  if (!name || !email || !projectType || !budget || !message) {
+  if (!name || !phone || !email || !message) {
     return res.status(400).json({ error: "All fields are required" });
   }
 
@@ -17,10 +17,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (!RESEND_API_KEY) {
     console.log("=== Lead Capture (Development Mode - No Resend Key) ===");
     console.log(`Name: ${name}`);
+    console.log(`Phone: ${phone}`);
     console.log(`Email: ${email}`);
-    console.log(`Project Type: ${projectType}`);
-    console.log(`Budget: ${budget}`);
-    console.log(`Message: ${message}`);
+    console.log(`Description: ${message}`);
     console.log("======================================================");
 
     // Return a mocked success for smooth user testing
@@ -40,16 +39,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       body: JSON.stringify({
         from: "LycanWeb Lead <onboarding@resend.dev>",
         to: process.env.CONTACT_EMAIL || "ganesh.tomar.dev@gmail.com",
-        subject: `🐺 New Lycan Lead: ${name} (${projectType})`,
+        subject: `🐺 New Lycan Lead: ${name}`,
         html: `
           <div style="background-color: #000; color: #fff; padding: 30px; font-family: sans-serif; border-radius: 12px; border: 1px solid #222;">
-            <h2 style="color: #8b5cf6; border-bottom: 1px solid #222; padding-bottom: 10px; margin-top: 0;">🐺 NEW LEAD BluePrint</h2>
+            <h2 style="color: #8b5cf6; border-bottom: 1px solid #222; padding-bottom: 10px; margin-top: 0;">🐺 NEW LEAD BLUEPRINT</h2>
             <p style="margin: 15px 0;"><strong>Name:</strong> <span style="color: #ddd;">${name}</span></p>
+            <p style="margin: 15px 0;"><strong>Phone:</strong> <span style="color: #ddd;">${phone}</span></p>
             <p style="margin: 15px 0;"><strong>Email:</strong> <span style="color: #ddd;"><a href="mailto:${email}" style="color: #a78bfa; text-decoration: none;">${email}</a></span></p>
-            <p style="margin: 15px 0;"><strong>Project Type:</strong> <span style="color: #ddd;">${projectType}</span></p>
-            <p style="margin: 15px 0;"><strong>Budget:</strong> <span style="color: #ddd; font-weight: bold;">${budget}</span></p>
             <div style="margin: 20px 0; background-color: #0b0b0c; border: 1px solid #111; padding: 15px; border-radius: 8px;">
-              <strong style="color: #8b5cf6; display: block; margin-bottom: 8px;">Message Payload:</strong>
+              <strong style="color: #8b5cf6; display: block; margin-bottom: 8px;">Description Payload:</strong>
               <p style="color: #aaa; margin: 0; line-height: 1.5; white-space: pre-wrap;">${message}</p>
             </div>
             <p style="font-size: 11px; color: #555; margin-top: 30px; border-top: 1px solid #111; padding-top: 15px; text-align: center;">
